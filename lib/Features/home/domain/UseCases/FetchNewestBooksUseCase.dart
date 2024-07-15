@@ -4,13 +4,13 @@ import 'package:clean/core/Errors/Failure.dart';
 import 'package:clean/core/UseCases/UseCase.dart';
 import 'package:dartz/dartz.dart';
 
-class FetchFeaturedBooksUseCase extends UseCase<List<bookEntitiy>,NoParam> {
+class FetchNewestBooksUseCase extends UseCase<List<bookEntitiy>,NoParam> {
   final HomeRepo homeRepo;
-  FetchFeaturedBooksUseCase(this.homeRepo);
+  FetchNewestBooksUseCase(this.homeRepo);
 
   @override
   Future<Either<Failure, List<bookEntitiy>>> call([NoParam? param])  async{
-        return await homeRepo.fetchFeaturedBooks();
+    return await homeRepo.fetchFeaturedBooks();
   }
 
 
