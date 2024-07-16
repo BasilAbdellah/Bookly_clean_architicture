@@ -13,9 +13,9 @@ class BookModel extends bookEntitiy {
     this.items,
   }) : super(
             bookId: Items().id!,
-            Image: Items().volumeInfo!.imageLinks!.thumbnail ?? "",
+            Image: Items().volumeInfo?.imageLinks?.thumbnail ?? "",
             title: Items().volumeInfo!.title,
-            authorName: Items().volumeInfo!.authors!.first,
+            authorName: Items().volumeInfo?.authors?.first ?? "No Name",
             price: 0.0,
             rating: Items().volumeInfo!.averageRating);
 
