@@ -32,7 +32,9 @@ class VolumeInfo {
       this.readingModes, 
       this.pageCount, 
       this.printType, 
-      this.categories, 
+      this.categories,
+      this.averageRating,
+      this.ratingsCount,
       this.maturityRating, 
       this.allowAnonLogging, 
       this.contentVersion, 
@@ -58,6 +60,8 @@ class VolumeInfo {
     pageCount = json['pageCount'];
     printType = json['printType'];
     categories = json['categories'] != null ? json['categories'].cast<String>() : [];
+    averageRating = json['averageRating'] as num?;
+    ratingsCount = json['ratingsCount'] as num?;
     maturityRating = json['maturityRating'];
     allowAnonLogging = json['allowAnonLogging'];
     contentVersion = json['contentVersion'];
@@ -77,6 +81,8 @@ class VolumeInfo {
   int? pageCount;
   String? printType;
   List<String>? categories;
+  num? averageRating;
+  num? ratingsCount;
   String? maturityRating;
   bool? allowAnonLogging;
   String? contentVersion;
@@ -95,6 +101,8 @@ VolumeInfo copyWith({  String? title,
   int? pageCount,
   String? printType,
   List<String>? categories,
+  num? averageRating,
+  num? ratingsCount,
   String? maturityRating,
   bool? allowAnonLogging,
   String? contentVersion,
@@ -113,6 +121,8 @@ VolumeInfo copyWith({  String? title,
   pageCount: pageCount ?? this.pageCount,
   printType: printType ?? this.printType,
   categories: categories ?? this.categories,
+  averageRating: averageRating ?? this.averageRating,
+  ratingsCount: ratingsCount ?? this.ratingsCount,
   maturityRating: maturityRating ?? this.maturityRating,
   allowAnonLogging: allowAnonLogging ?? this.allowAnonLogging,
   contentVersion: contentVersion ?? this.contentVersion,
@@ -138,6 +148,8 @@ VolumeInfo copyWith({  String? title,
     map['pageCount'] = pageCount;
     map['printType'] = printType;
     map['categories'] = categories;
+    map['averageRating'] = averageRating;
+    map['ratingsCount'] = ratingsCount;
     map['maturityRating'] = maturityRating;
     map['allowAnonLogging'] = allowAnonLogging;
     map['contentVersion'] = contentVersion;
