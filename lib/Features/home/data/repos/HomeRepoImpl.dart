@@ -4,6 +4,7 @@ import 'package:clean/Features/home/domain/entities/book_entity.dart';
 import 'package:clean/Features/home/domain/repos/HomeRepo.dart';
 import 'package:clean/core/Errors/Failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl extends HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
@@ -15,28 +16,40 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failure, List<bookEntitiy>>> fetchFeaturedBooks() async {
     try {
-      var booksList = homeLocaleDataSource.fetchFeaturedBooks();
-      if (booksList.isNotEmpty) {
-        return right(booksList);
+      List<bookEntitiy> books;
+     books = homeLocaleDataSource.fetchFeaturedBooks();
+      if (books.isNotEmpty) {
+        return right(books);
       }
-      var books = await homeRemoteDataSource.fetchFeaturedBooks();
+       books = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(books);
     } catch (e) {
-      return left(Failure());
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+        return left(ServerFailure(e.toString()));
+
+
     }
   }
 
   @override
   Future<Either<Failure, List<bookEntitiy>>> fetchNewestBooks() async{
     try {
-      var booksList = homeLocaleDataSource.fetchNewestBooks();
-      if (booksList.isNotEmpty) {
-        return right(booksList);
+      List<bookEntitiy> books;
+      books = homeLocaleDataSource.fetchNewestBooks();
+      if (books.isNotEmpty) {
+        return right(books);
       }
-      var books = await homeRemoteDataSource.fetchNewestBooks();
+      books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
     } catch (e) {
-      return left(Failure());
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+        return left(ServerFailure(e.toString()));
+
+
     }
   }
 }
