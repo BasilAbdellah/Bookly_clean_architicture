@@ -1,3 +1,4 @@
+import 'package:clean/Features/home/presentation/views/widgets/FeaturedBooksListViewBlocBuilder.dart';
 import 'package:clean/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,7 +23,7 @@ class HomeViewBody extends StatelessWidget {
                     horizontal: 30,
                   ),
                   child: CustomAppBar()),
-              FeaturedBooksListView(),
+              FeaturedBooksListViewBlocBuilder(),
               SizedBox(
                 height: 50,
               ),
@@ -49,3 +50,5 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+
+

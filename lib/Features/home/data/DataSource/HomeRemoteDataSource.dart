@@ -1,4 +1,5 @@
 import 'package:clean/Features/home/data/models/BookModel.dart';
+import 'package:clean/Features/home/data/models/Items.dart';
 import 'package:clean/Features/home/domain/entities/book_entity.dart';
 import 'package:clean/constants.dart';
 import 'package:clean/core/utils/ApiService.dart';
@@ -33,7 +34,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   List<bookEntitiy> getBooksList(Map<String, dynamic> data) {
     List<bookEntitiy> books = [];
     for (var bookMap in data["items"]) {
-      books.add(BookModel.fromJson(bookMap));
+      books.add(Items.fromJson(bookMap));
     }
     return books;
   }

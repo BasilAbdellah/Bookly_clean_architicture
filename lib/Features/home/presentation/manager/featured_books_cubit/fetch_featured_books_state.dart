@@ -1,7 +1,7 @@
 part of 'fetch_featured_books_cubit.dart';
 
 @immutable
-sealed class FetchFeaturedBooksState {}
+abstract class FetchFeaturedBooksState {}
 
 final class FetchFeaturedBooksInitial extends FetchFeaturedBooksState {}
 final class FetchFeaturedBooksLoading extends FetchFeaturedBooksState {}

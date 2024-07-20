@@ -1,3 +1,5 @@
+import 'package:clean/Features/home/domain/entities/book_entity.dart';
+
 import 'VolumeInfo.dart';
 import 'SaleInfo.dart';
 import 'AccessInfo.dart';
@@ -12,7 +14,7 @@ import 'SearchInfo.dart';
 /// accessInfo : {"country":"EG","viewability":"NO_PAGES","embeddable":false,"publicDomain":false,"textToSpeechPermission":"ALLOWED","epub":{"isAvailable":false},"pdf":{"isAvailable":false},"webReaderLink":"http://play.google.com/books/reader?id=mIxQAAAAMAAJ&hl=&source=gbs_api","accessViewStatus":"NONE","quoteSharingAllowed":false}
 /// searchInfo : {"textSnippet":"This book compares constructs from C with constructs from Ada in terms of levels of abstractions."}
 
-class Items {
+class Items extends bookEntitiy{
   Items({
       this.kind, 
       this.id, 
@@ -21,7 +23,14 @@ class Items {
       this.volumeInfo, 
       this.saleInfo, 
       this.accessInfo, 
-      this.searchInfo,});
+      this.searchInfo,})
+      : super(
+      bookId: id!,
+      Image: volumeInfo?.imageLinks?.thumbnail ?? "",
+      title: volumeInfo!.title,
+      authorName: volumeInfo?.authors?.first ?? "No Name",
+      price: 0.0,
+      rating: volumeInfo!.averageRating);
 
   Items.fromJson(dynamic json) {
     kind = json['kind'];
